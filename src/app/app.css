@@ -65,25 +65,33 @@
   height: 100%;
 }
 
-.carousel-item.image-1 {
+#myCarousel .container {
+  height: 100%;
+  width: 100%;
+}
+
+#myCarousel .image-0 {
   background-image: url(../../public/eliott-reyna-jCEpN62oWL4-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 100%;
 }
 
-.carousel-item.image-2 {
+#myCarousel .image-1 {
   background-image: url(../../public/eye-for-ebony-OExQjtxbIpE-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 100%;
 }
 
-.carousel-item.image-3 {
+#myCarousel .image-2 {
   background-image: url(../../public/brooke-cagle-C2GI1fuoSQ8-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 100%;
 }
 
 .mission-container {
