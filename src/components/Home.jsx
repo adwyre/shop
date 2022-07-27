@@ -1,6 +1,7 @@
 import React from "react";
 import '../app/app.css';
 import { useEffect, useState } from "react";
+import Modal from './Modal'
 
 const Home = () => {
   const [activeSlide, setActiveSlide] = useState(0);

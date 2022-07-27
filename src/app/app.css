@@ -51,6 +51,55 @@
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+/* Dropdown menus */
+.modal {
+  margin-top: 56px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 5;
+  padding-left: 20%;
+}
+@media (max-width: 1075px) {
+  .modal {
+    padding-left: 1rem;
+  }
+}
+.modal-menu {
+  position: absolute; 
+  background-color: rgb(255, 255, 255); 
+  border-radius: 0px 0px 8px 8px;  
+  margin-right: 0px; 
+  width: 300px; 
+  max-width: 700px; 
+  height: fit-content;
+  color: rgb(71, 71, 71); 
+  overflow: auto;
+}
+.modal-menu ul {
+  list-style-type: none; 
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.modal-menu li {
+  line-height: 3rem;
+  padding-left: 1rem;
+}
+.modal-menu .nav-link:hover {
+  background-color: rgb(209, 209, 209);
+}
+#men {
+  display: none;
+  margin-left: 8rem;
+}
+#women {
+  display: none;
+  margin-left: 11rem;
+}
+#jewelry {
+  display: none;
+  margin-left: 15rem;
+}
 
 /* HOME PAGE */
 #myCarousel {
@@ -95,6 +144,29 @@
 }
 
 .mission-container {
-  margin: 10vh 0;
+  margin: 10vh 15%;
   text-align: center;
+}
+/* SideBar */
+.browse-page {
+  height: 100vh;
+  justify-content: center;
+  margin: 0 20%;
+}
+@media (max-width: 1075px) {
+  .browse-page {
+    margin: 0;
+  }
+}
+.sidebar {
+  background-color: rgb(240, 240, 240);
+}
+
+.browse-page .row {
+  height:100%
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
 }
