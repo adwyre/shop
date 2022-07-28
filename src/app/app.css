@@ -90,11 +90,11 @@
 }
 #men {
   display: none;
-  margin-left: 8rem;
+  margin-left: 7rem;
 }
 #women {
   display: none;
-  margin-left: 11rem;
+  margin-left: 10rem;
 }
 #jewelry {
   display: none;
@@ -147,7 +147,9 @@
   margin: 10vh 15%;
   text-align: center;
 }
-/* SideBar */
+
+
+/* SIDEBAR */
 .browse-page {
   height: 100vh;
   justify-content: center;
@@ -169,4 +171,10 @@
   .sidebar {
     display: none;
   }
+}
+/* BROWSE */
+.item {
+  max-width: 400px;
+  border: 1px solid rgb(187, 187, 187);
+  border-radius: 50px;
 }
