@@ -22,6 +22,10 @@ function App() {
     const modalId = e.target.dataset.modalId
     document.getElementById(modalId).style.display = 'block'
   }
+  const hideModal = (e) => {
+    document.getElementsByClassName('modal')[0].style.display = 'none';
+    const modalId = e.target.dataset.modalId
+  }
 
   return (
     <Router>
@@ -39,13 +43,13 @@ function App() {
                 <NavLink exact className="nav-link" to="/">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/men" data-modal-id="men" onMouseOver={displayModal}>Men</NavLink>
+                <NavLink className="nav-link" to="/men" data-modal-id="men" onMouseOver={displayModal} onClick={hideModal}>Men</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/women" data-modal-id="women" onMouseOver={displayModal}>Women</NavLink>
+                <NavLink className="nav-link" to="/women" data-modal-id="women" onMouseOver={displayModal} onClick={hideModal}>Women</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/jewelry" data-modal-id="jewelry"onMouseOver={displayModal}>Jewelry</NavLink>
+                <NavLink className="nav-link" to="/jewelry" data-modal-id="jewelry"onMouseOver={displayModal} onClick={hideModal}>Jewelry</NavLink>
               </li>
             </ul>
             <form className="d-flex" role="search">
@@ -61,7 +65,7 @@ function App() {
         </div>
       </nav>
       <main>
-      <Modal />
+      <Modal hideModal={hideModal}/>
       <Switch>
         <Route path="/men">
           <Browse />

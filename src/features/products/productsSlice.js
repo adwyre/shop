@@ -38,6 +38,27 @@ export const fetchProducts = (category) => async (dispatch) => {
   }
 };
 
+// Filter subcategory for products
+export const fetchSubcategory = (category, subcategory) => async (dispatch) => {
+  try {
+    dispatch(loadProducts());
+    const products = await getProductsByCategory(category);
+    if (subcategory == 'outerwear') {
+      dispatch(setProducts(products.filter(product => product.title.includes('Jacket'))))
+    } else if (subcategory === 'tops') {
+      dispatch(setProducts(products.filter(product => !product.title.includes('Jacket') && !product.title.includes('Backpack'))))
+    } else if (subcategory === 'bracelets') {
+      dispatch(setProducts(products.filter(product => product.title.includes('Bracelet'))))
+    } else if (subcategory === 'rings') {
+      dispatch(setProducts(products.filter(product => !product.title.includes('Bracelet'))))
+    } else {
+      dispatch(setProducts(products))
+    }
+  } catch (error) {
+    dispatch(loadProductsFailed())
+  }
+}
+
 // Actions and Reducers
 export const {setProducts, loadProducts, loadProductsFailed} = productsSlice.actions;
 export default productsSlice.reducer;

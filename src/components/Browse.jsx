@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import '../app/app.css';
 import { useEffect, useState } from "react";
-import { selectProducts, fetchProducts } from "../features/products/productsSlice";
+import { selectProducts, fetchProducts, fetchSubcategory } from "../features/products/productsSlice";
 import Products from "../features/products/Products";
 
 const Browse = () => {
@@ -11,10 +11,11 @@ const Browse = () => {
   const products = useSelector(selectProducts)
   const [category, setCategory] = useState('');
   const { pathname, search } = useLocation();
+  const subcategory = search.slice(10);
   const { isLoading, error } = products;
 
+  // Set category to match pathname
   useEffect(() => {
-    // Set category to match pathname
     if (pathname === '/women') {
       setCategory("women's clothing");
     } else if (pathname === '/men') {
@@ -24,9 +25,14 @@ const Browse = () => {
     }
   }, [pathname, search]);
   
+  // Fetch product data
   useEffect(() => {
-    dispatch(fetchProducts(category));
-  }, [category]);
+    if (subcategory) {
+      dispatch(fetchSubcategory(category, subcategory));
+    } else {
+      dispatch(fetchProducts(category));
+    }
+  }, [category, subcategory]);
 
   return (
     <div className="browse-page">
@@ -39,7 +45,7 @@ const Browse = () => {
 </svg> Filters</li>
           </ul>
         </nav>
-        {/* Main section */}
+        {/* Products */}
         <div className="bowse-items d-flex flex-wrap">
           { !isLoading || products.length > 0 ? products.map(product => <Products product={product}/>) : <p>Loading</p>}
         </div>
