@@ -49,7 +49,7 @@ const Home = () => {
               <div className="carousel-caption text-end">
                 <h1>20% off outerwear</h1>
                 <p>With fall around the corner stay cozy with our lightweight jackets and sweaters.</p>
-                <p><a className="btn btn-lg btn-primary" href="#">Shop now</a></p>
+                <p><a className="btn btn-lg btn-cta" href="#">Shop now</a></p>
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@ const Home = () => {
               <div className="carousel-caption text-start">
                 <h1>Women's Tops</h1>
                 <p>New collection of women's tops now available.</p>
-                <p><a className="btn btn-lg btn-primary" href="#">Shop now</a></p>
+                <p><a className="btn btn-lg btn-cta" href="#">Shop now</a></p>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@ const Home = () => {
               <div className="carousel-caption text-end">
                 <h1>Men's Clothing</h1>
                 <p>Browse our large selection of men's apparel.</p>
-                <p><a className="btn btn-lg btn-primary" href="#">Shop now</a></p>
+                <p><a className="btn btn-lg btn-cta" href="#">Shop now</a></p>
               </div>
             </div>
           </div>

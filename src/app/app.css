@@ -8,7 +8,7 @@
   justify-content: space-between;
 }
 
-@media (max-width: 1075px) {
+@media (max-width: 1300px) {
   .nav-container {
     margin: auto 2%;
     justify-content: space-between;
@@ -149,32 +149,111 @@
 }
 
 
-/* SIDEBAR */
-.browse-page {
-  height: 100vh;
-  justify-content: center;
-  margin: 0 20%;
-}
-@media (max-width: 1075px) {
-  .browse-page {
-    margin: 0;
-  }
-}
-.sidebar {
+/* filter-bar */
+.filter-bar {
   background-color: rgb(240, 240, 240);
-}
-
-.browse-page .row {
-  height:100%
+  flex: 0 0 auto;
+  height: 4rem;
 }
 @media (max-width: 768px) {
-  .sidebar {
+  .filter-bar {
     display: none;
   }
 }
-/* BROWSE */
+.filter-bar ul {
+  margin-top: 1.2rem;
+}
+
+/* BROWSE PAGE */
+.browse-page {
+  height: 100vh;
+  width: auto;
+  justify-content: center;
+  margin: 0 20%;
+  padding: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 1300px) {
+  .browse-page {
+    width: 100vw;
+    margin: 0;
+  }
+}
+@media (max-width: 768px) {
+  .browse-page {
+    margin: auto;
+  }
+}  
+.browse-page .row {
+  height: fit-content;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  justify-content: center;
+  flex-direction: row;
+} 
+.browse-page .browse-items {
+  flex: 0 0 auto;
+  width: 75%;
+}
+
+/* ITEMS */
 .item {
-  max-width: 400px;
-  border: 1px solid rgb(187, 187, 187);
-  border-radius: 50px;
+  width: 33.33%;
+  max-height: 700px;
+  /* border: 1px solid rgb(187, 187, 187); */
+  border-radius: 10px;
+  display: flex;
+  flex-shrink: 1;
+  flex-flow: column;
+  margin-bottom: 2rem;
+}
+@media (max-width: 1687px) {
+  .item {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .item {
+    width: 33.33%;
+  }
+}
+
+@media (max-width: 768px) {
+  .item {
+    justify-self: center;
+    margin-right: 0;
+    width: 80%;
+  }
+}  
+
+.item-image {
+  height: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+.item-image img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.item-caption {
+  text-align: center;
+  margin: 1rem;
+}
+
+.item-title {
+  text-align: left;
+  height: 5rem;
+  margin: auto;
+}
+
+.item-caption .btn-primary {
+  width: fit-content;
+  margin: auto;
 }

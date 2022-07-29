@@ -16,8 +16,12 @@ body main {
   margin-top: 56px;
 }
 
-.btn-primary {
+.btn-cta {
   background-color: #00F0A4;
   border: #00F0A4;
   color: #000000;
+}
+
+.btn-primary {
+  background-color: #1395BD;
 }
