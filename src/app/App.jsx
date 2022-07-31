@@ -11,8 +11,12 @@ import './app.css';
 import Home from "../components/Home";
 import Browse from "../components/Browse";
 import Modal from "../components/Modal";
+import { setCategory, setSubcategory } from "../features/products/productsSlice";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
   const displayModal = (e) => {
     const elements = document.getElementsByClassName('modal-menu');
     for (let i = 0; i < elements.length; i++) {
@@ -26,6 +30,24 @@ function App() {
     document.getElementsByClassName('modal')[0].style.display = 'none';
     const modalId = e.target.dataset.modalId
   }
+  
+  // Set category to match pathname
+  const updateCategory = (e) => {
+    if (e.target.dataset.modalId === 'women') {
+      dispatch(setCategory("women's clothing"));
+    } else if (e.target.dataset.modalId === 'men') {
+      dispatch(setCategory("men's clothing"));
+    } else {
+      dispatch(setCategory("jewelery"));
+    }
+  };
+
+  const handleNavClick = (e) => {
+    hideModal(e);
+    dispatch(setSubcategory(''));
+    updateCategory(e);
+  }
+  
 
   return (
     <Router>
@@ -43,13 +65,13 @@ function App() {
                 <NavLink exact className="nav-link" to="/">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/men" data-modal-id="men" onMouseOver={displayModal} onClick={hideModal}>Men</NavLink>
+                <NavLink className="nav-link" to="/men" data-modal-id="men" onMouseOver={displayModal} onClick={handleNavClick}>Men</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/women" data-modal-id="women" onMouseOver={displayModal} onClick={hideModal}>Women</NavLink>
+                <NavLink className="nav-link" to="/women" data-modal-id="women" onMouseOver={displayModal} onClick={handleNavClick}>Women</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/jewelry" data-modal-id="jewelry"onMouseOver={displayModal} onClick={hideModal}>Jewelry</NavLink>
+                <NavLink className="nav-link" to="/jewelry" data-modal-id="jewelry"onMouseOver={displayModal} onClick={handleNavClick}>Jewelry</NavLink>
               </li>
             </ul>
             <form className="d-flex" role="search">
@@ -65,7 +87,7 @@ function App() {
         </div>
       </nav>
       <main>
-      <Modal hideModal={hideModal}/>
+      <Modal hideModal={hideModal} updateCategory={updateCategory}/>
       <Switch>
         <Route path="/men">
           <Browse />

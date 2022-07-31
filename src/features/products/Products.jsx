@@ -13,7 +13,8 @@ const Products = (props) => {
       </div>
       <div className="item-caption">
         <div className="item-title">
-          <p className="font-weight-bold">{product.title}</p>
+          <h6><strong>{product.title}</strong></h6>
+          <p>${product.price}</p>
         </div>
         <button className="btn btn-primary">Add to Cart</button>
       </div>

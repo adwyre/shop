@@ -149,19 +149,33 @@
 }
 
 
-/* filter-bar */
-.filter-bar {
+/* sort-bar */
+.sort-bar {
   background-color: rgb(240, 240, 240);
-  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
   height: 4rem;
+  width: 20rem;
+  margin: 0 auto auto 0;
+  padding: 0.7rem 1.2rem;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
+
 @media (max-width: 768px) {
-  .filter-bar {
-    display: none;
+  .sort-bar {
+    width: 100%;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .sort-container {
+    padding: 0;
   }
 }
-.filter-bar ul {
-  margin-top: 1.2rem;
+
+.sort-bar label {
+  width: 9rem;
+  margin: auto;
 }
 
 /* BROWSE PAGE */

@@ -3,48 +3,48 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import '../app/app.css';
 import { useEffect, useState } from "react";
-import { selectProducts, fetchProducts, fetchSubcategory } from "../features/products/productsSlice";
+import { selectCategory, selectSubcategory, selectProducts, fetchProducts, fetchSubcategory, setCategory, setSubcategory } from "../features/products/productsSlice";
 import Products from "../features/products/Products";
+import SortBar from "./SortBar";
 
 const Browse = () => {
   const dispatch = useDispatch();
-  const products = useSelector(selectProducts)
-  const [category, setCategory] = useState('');
+  const products = useSelector(selectProducts);
+  const category = useSelector(selectCategory);
+  const subcategory = useSelector(selectSubcategory);
   const { pathname, search } = useLocation();
-  const subcategory = search.slice(10);
   const { isLoading, error } = products;
 
-  // Set category to match pathname
+  // If category empty after render set to default
   useEffect(() => {
-    if (pathname === '/women') {
-      setCategory("women's clothing");
-    } else if (pathname === '/men') {
-      setCategory("men's clothing");
+    if (!category) {
+      if (pathname === '/women') {
+        dispatch(setCategory("women's clothing"));
+      } else if (pathname=== '/men') {
+        dispatch(setCategory("men's clothing"));
+      } else {
+        dispatch(setCategory("jewelery"));
+      }
     } else {
-      setCategory("jewelery")
+      return
     }
-  }, [pathname, search]);
-  
+  }, [pathname])
+
   // Fetch product data
   useEffect(() => {
+    console.log(subcategory)
     if (subcategory) {
       dispatch(fetchSubcategory(category, subcategory));
     } else {
       dispatch(fetchProducts(category));
     }
-  }, [category, subcategory]);
+  }, [category, search]);
 
   return (
     <div className="browse-page">
       <div className="row">
-        {/* filter-bar */}
-        <nav className="filter-bar">
-          <ul className="navbar-nav ms-2">
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
-  <path d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
-</svg> Filters</li>
-          </ul>
-        </nav>
+        {/* sort-bar */}
+        <SortBar />
         {/* Products */}
         <div className="bowse-items d-flex flex-wrap">
           { !isLoading || products.length > 0 ? products.map(product => <Products product={product}/>) : <p>Loading</p>}
