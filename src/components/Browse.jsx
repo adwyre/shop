@@ -33,7 +33,6 @@ const Browse = () => {
 
   // Fetch product data
   useEffect(() => {
-    console.log(subcategory)
     if (subcategory) {
       dispatch(fetchSubcategory(category, subcategory));
     } else {

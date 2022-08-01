@@ -1,12 +1,19 @@
 import { sortBy } from "../features/products/productsSlice"
 import { useDispatch } from "react-redux"
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const SortBar = () => {
   const dispatch = useDispatch();
+  const { pathname, search } = useLocation();
 
   const handleChange = (e) => {
     dispatch(sortBy(e.target.value))
   }
+
+  useEffect(() => {
+    document.getElementById("sort").value = "all"
+  }, [pathname, search])
 
   return (
     <div className="sort-container">

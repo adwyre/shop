@@ -1,17 +1,15 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
-  useRouteMatch,
 } from "react-router-dom";
 import './app.css';
 import Home from "../components/Home";
 import Browse from "../components/Browse";
 import Modal from "../components/Modal";
-import { setCategory, setSubcategory } from "../features/products/productsSlice";
+import { setCategory, setSubcategory, sortBy } from "../features/products/productsSlice";
 import { useDispatch } from "react-redux";
 
 function App() {
@@ -44,10 +42,15 @@ function App() {
 
   const handleNavClick = (e) => {
     hideModal(e);
+    dispatch(sortBy(''));
     dispatch(setSubcategory(''));
     updateCategory(e);
   }
   
+  const handleToggle = () => {
+    let navStyle = document.getElementsByClassName("navbar-collapse")[0].style;
+    navStyle.display === '' || navStyle.display === 'none' ? navStyle.display = 'flex' : navStyle.display = 'none';
+  }
 
   return (
     <Router>
@@ -56,7 +59,7 @@ function App() {
           <NavLink className="navbar-brand" to="/"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" className="bi bi-app" viewBox="0 0 16 16">
   <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/>
 </svg></NavLink>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onClick={handleToggle}>
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
