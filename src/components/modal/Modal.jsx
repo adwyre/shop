@@ -1,8 +1,8 @@
 import React from "react";
-import '../app/app.css';
+import './modal.css';
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setSubcategory } from "../features/products/productsSlice";
+import { setSubcategory } from "../../features/products/productsSlice";
 
 const Modal = (props) => {
   const dispatch = useDispatch();

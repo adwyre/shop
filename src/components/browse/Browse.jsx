@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
-import '../app/app.css';
+import './browse.css';
 import { useEffect} from "react";
-import { selectCategory, selectSubcategory, selectProducts, selectSorted, fetchProducts, fetchSubcategory, setCategory} from "../features/products/productsSlice";
-import Products from "../features/products/Products";
-import SortBar from "./SortBar";
+import { selectCategory, selectSubcategory, selectProducts, selectSorted, fetchProducts, fetchSubcategory, setCategory} from "../../features/products/productsSlice";
+import Products from "../../features/products/Products";
+import SortBar from "../sortBar/SortBar";
 
 const Browse = () => {
   const dispatch = useDispatch();

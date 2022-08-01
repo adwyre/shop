@@ -6,9 +6,9 @@ import {
   NavLink,
 } from "react-router-dom";
 import './app.css';
-import Home from "../components/Home";
-import Browse from "../components/Browse";
-import Modal from "../components/Modal";
+import Home from "../components/home/Home";
+import Browse from "../components/browse/Browse";
+import Modal from "../components/modal/Modal";
 import { setCategory, setSubcategory, sortBy } from "../features/products/productsSlice";
 import { useDispatch } from "react-redux";
 

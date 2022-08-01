@@ -1,0 +1,28 @@
+/* SORT-BAR */
+.sort-bar {
+  background-color: rgb(240, 240, 240);
+  display: flex;
+  flex-direction: row;
+  height: 4rem;
+  width: 20rem;
+  margin: 0 auto auto 0;
+  padding: 0.7rem 1.2rem;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+@media (max-width: 768px) {
+  .sort-bar {
+    width: 100%;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .sort-container {
+    padding: 0;
+  }
+}
+
+.sort-bar label {
+  width: 9rem;
+  margin: auto;
+}

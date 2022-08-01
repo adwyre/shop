@@ -1,0 +1,46 @@
+/* HOME PAGE */
+#myCarousel {
+  height: 80vh;
+}
+
+#myCarousel .carousel-inner {
+  height: 100%;
+}
+
+#myCarousel .carousel-item {
+  height: 100%;
+}
+
+#myCarousel .container {
+  height: 100%;
+  width: 100%;
+}
+
+#myCarousel .image-0 {
+  background-image: url(../../../public/eliott-reyna-jCEpN62oWL4-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+#myCarousel .image-1 {
+  background-image: url(../../../public/eye-for-ebony-OExQjtxbIpE-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+#myCarousel .image-2 {
+  background-image: url(../../../public/brooke-cagle-C2GI1fuoSQ8-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.mission-container {
+  margin: 10vh 15%;
+  text-align: center;
+}

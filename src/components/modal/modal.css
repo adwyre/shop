@@ -1,0 +1,73 @@
+/* DROPDOWN MENUS */
+.modal {
+  margin-top: 56px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 5;
+  padding-left: 20%;
+}
+@media (max-width: 1300px) {
+  .modal {
+    padding-left: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .modal {
+  margin-top: 224px;
+  padding-left: 0;
+  }
+}
+.modal-menu {
+  position: absolute; 
+  background-color: rgb(255, 255, 255); 
+  border-radius: 0px 0px 8px 8px;  
+  margin-right: 0px; 
+  width: 300px; 
+  max-width: 700px; 
+  height: fit-content;
+  color: rgb(71, 71, 71); 
+  overflow: auto;
+}
+@media (max-width: 768px) {
+  .modal-menu {
+    border-radius: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.modal-menu ul {
+  list-style-type: none; 
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.modal-menu li {
+  line-height: 3rem;
+  padding-left: 1rem;
+}
+@media (max-width: 768px) {
+  .modal-menu li {
+    padding-left: 1.5rem;
+  }
+
+}
+.modal-menu .nav-link:hover {
+  background-color: rgb(209, 209, 209);
+}
+#men {
+  display: none;
+  margin-left: 7rem;
+}
+#women {
+  display: none;
+  margin-left: 10rem;
+}
+#jewelry {
+  display: none;
+  margin-left: 15rem;
+}
+@media (max-width: 768px) {
+  #men, #women, #jewelry {
+    margin-left: 0;
+  }
+}

@@ -1,7 +1,8 @@
-import { sortBy } from "../features/products/productsSlice"
+import { sortBy } from "../../features/products/productsSlice"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import './sortBar.css';
 
 const SortBar = () => {
   const dispatch = useDispatch();
