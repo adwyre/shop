@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import '../app/app.css';
-import { useEffect, useState } from "react";
-import { selectCategory, selectSubcategory, selectProducts, fetchProducts, fetchSubcategory, setCategory, setSubcategory } from "../features/products/productsSlice";
+import { useEffect} from "react";
+import { selectCategory, selectSubcategory, selectProducts, selectSorted, fetchProducts, fetchSubcategory, setCategory} from "../features/products/productsSlice";
 import Products from "../features/products/Products";
 import SortBar from "./SortBar";
 
@@ -12,6 +12,7 @@ const Browse = () => {
   const products = useSelector(selectProducts);
   const category = useSelector(selectCategory);
   const subcategory = useSelector(selectSubcategory);
+  const sorted = useSelector(selectSorted);
   const { pathname, search } = useLocation();
   const { isLoading, error } = products;
 
@@ -47,7 +48,7 @@ const Browse = () => {
         <SortBar />
         {/* Products */}
         <div className="bowse-items d-flex flex-wrap">
-          { !isLoading || products.length > 0 ? products.map(product => <Products product={product}/>) : <p>Loading</p>}
+          { sorted.length > 0 && products.length > 0 ? sorted.map((product, i) => <Products key={i} product={product}/>) : products.map((product, i) => <Products key={i} product={product}/>)}
         </div>
       </div>
     </div>
