@@ -23,5 +23,11 @@ body main {
 }
 
 .btn-primary {
-  background-color: #1395BD;
+  background-color: #00a2d3;
+  border: #00a2d3 solid 1px;
+}
+
+.btn-primary:hover {
+  background-color: #00516a;
+  border: #00516a solid 1px;
 }

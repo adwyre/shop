@@ -36,7 +36,7 @@ const productsSlice = createSlice({
         state.sorted = sorted
       } else if (action.payload === 'rating') {
         const sorted = state.products.slice();
-        sorted.sort((a, b) => b.rating - a.rating);
+        sorted.sort((a, b) => b.rating.rate - a.rating.rate);
         state.sorted = sorted
       } else {
         state.sorted = []

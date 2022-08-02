@@ -84,19 +84,19 @@ const Home = () => {
       <div className="mission-container">
         <div className="row justify-content-evenly">
           <div className="col-lg-3">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#1395BD"/><text x="50%" y="50%" fill="#1395BD" dy=".3em">140x140</text></svg>
+            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#00a2d3"/></svg>
 
             <h2 className="fw-normal">Affordable</h2>
             <p>We always strive to provide affordable merchandise while still upholding our sustainability efforts.</p>
           </div>
           <div className="col-lg-3">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#1395BD"/><text x="50%" y="50%" fill="#1395BD" dy=".3em">140x140</text></svg>
+            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#00a2d3"/></svg>
 
             <h2 className="fw-normal">Sustainable</h2>
             <p>It is our duty as a company to constantly develop new methods of sustainability.</p>
           </div>
           <div className="col-lg-3">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#1395BD"/><text x="50%" y="50%" fill="#1395BD" dy=".3em">140x140</text></svg>
+            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#00a2d3"/></svg>
 
             <h2 className="fw-normal">Fashionable</h2>
             <p>As a fashion company our goal first and foremost is to give customers the best of today's styles.</p>
