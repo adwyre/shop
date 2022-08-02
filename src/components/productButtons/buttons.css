@@ -1,0 +1,29 @@
+.btn-primary {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.06rem;
+}
+
+.form-control.quantity {
+  border-radius: 0;
+  max-width: 4rem;
+  text-align: center;
+  border-top: 0;
+  border-right: 2px solid #cedfda;
+  border-bottom: 0;
+  border-left: 1px solid #cedfda;
+}
+
+.btn-group {
+  border: 1px solid #cedfda;
+}
+
+.product-button {
+  margin: 5px auto;
+}
+/* disable arrows on number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

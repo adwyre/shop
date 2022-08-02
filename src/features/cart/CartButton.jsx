@@ -13,7 +13,7 @@ const CartButton = () => {
     return (
       <>
         {fullCartIcon}
-        <span className="position-absolute mt-2 top-0 start-100 translate-middle badge rounded-pill text-bg-light">
+        <span className="position-absolute mt-2 top-0 start-100 translate-middle badge rounded-pill green">
         {cart.length}
         </span>
       </>

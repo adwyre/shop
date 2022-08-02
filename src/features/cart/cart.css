@@ -3,3 +3,8 @@
   padding: 6px 8px;
   margin-left: 2px;
 }
+
+.green {
+  background-color: #00F0A4;
+  color: black;
+}
