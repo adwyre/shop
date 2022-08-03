@@ -13,7 +13,6 @@ const AddButton = (props) => {
     const quantity = e.target.parentNode.getElementsByTagName("input")[0].value
     dispatch(addToCart({product: item, quantity: quantity}))
   }
-
   return (
   <button data-product-id={product.id} onClick={handleClick} className="btn btn-primary product-button">Add to Cart</button>
   )

@@ -15,13 +15,11 @@ const cartSlice = createSlice({
       const { product } = action.payload;
       console.log(product)
       const id = product.id;
-      console.log(id)
-
       state.cartItems[id] = action.payload
     },
     updateQuantity(state, action) { //action = {id: ..., quantity: ...} 
       const { id, quantity } = action.payload;
-
+      console.log(id)
       state.cartItems[id].quantity = quantity;
     },
     removeFromCart(state, action) {
@@ -29,8 +27,16 @@ const cartSlice = createSlice({
     }
   }});
 
+  // get total number of products in cart
+  export const getTotalItems = (cart) => {
+    const items = Object.values(cart);
+    const quantities = items.map(item => item['quantity'])
+    return quantities.reduce(
+      (prev, curr) => parseInt(prev) + parseInt(curr))
+  }
+
 // Actions and Reducers
-export const {addToCart, updateQuantity} = cartSlice.actions;
+export const {addToCart, updateQuantity, removeFromCart} = cartSlice.actions;
 export default cartSlice.reducer;
 
 // Selectors

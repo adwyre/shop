@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCartItems } from "./cartSlice";
+import { selectCartItems, getTotalItems } from "./cartSlice";
 import './cart.css'
 
 const CartButton = () => {
@@ -14,7 +14,7 @@ const CartButton = () => {
       <>
         {fullCartIcon}
         <span className="position-absolute mt-2 top-0 start-100 translate-middle badge rounded-pill green">
-        {cart.length}
+        {getTotalItems(cart)}
         </span>
       </>
     )
@@ -22,7 +22,7 @@ const CartButton = () => {
 
   return (
     <button type="button" className="btn btn-outline-secondary position-relative" id="cartButton">
-      {cart.length === 0 ? emptyCartIcon : fullCart(cart)}
+      {Object.keys(cart).length === 0 ? emptyCartIcon : fullCart(cart)}
     </button>
   )
 }
