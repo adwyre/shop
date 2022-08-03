@@ -9,43 +9,55 @@ const QuantityButton = (props) => {
   const product = props.product;
   const cartItems = useSelector(selectCartItems);
 
-  const handleClick = (e) => {
-    const input = e.target.parentNode.getElementsByTagName("input")[0];
-    const currValue = parseInt(input.value);
-    const sign = e.target.innerHTML;
-    // add or subtract 1 to/from input depending on button clicked
-    if (sign === "+") {
-      input.value = currValue + 1;
-    } else {
-      input.value = currValue - 1;
-    }
-  }
-
-  const handleChange = (e) => {
-    console.log('change')
-    const currValue = e.target.value;
-    const id = e.target.dataset.productId;
-    console.log(currValue)
+  const validateInput = (currValue, element) => {
     // reset values < 0 or > 99
     if (currValue > 99 || currValue < 0) {
       if (currValue > 99) {
-        e.target.value = 99;
+        element.value = 99;
       } else {
-        e.target.value = 0;
+        element.value = 0;
       } 
-      console.log(e.target.value)
-    }
+    } 
+    return;
+  };
+
+  const checkCart = (id, element) => {
     // if item in cart update quantity
     if (cartItems[id]) {
       const actionObj = {
         id: id,
-        quantity: e.target.value
+        quantity: element.value
       }
       dispatch(updateQuantity(actionObj))
     }
+    return;
+  };
+
+  const handleClick = (e) => {
+    const input = e.target.parentNode.getElementsByTagName("input")[0];
+    let currValue = parseInt(input.value);
+    const id = input.dataset.productId;
+    const sign = e.target.innerHTML;
+    // add or subtract 1 to/from input depending on button clicked
+    if (sign === "+") {
+      input.value = currValue + 1;
+      currValue += 1;
+    } else {
+      input.value = currValue - 1;
+      currValue -= 1;
+    }
+    validateInput(currValue, input);
+    checkCart(id, input);
   }
 
-
+  const handleChange = (e) => {
+    const currValue = e.target.value;
+    const id = e.target.dataset.productId;
+    console.log(currValue)
+    
+    validateInput(currValue, e.target)
+    checkCart(id, e.target)
+  }
 
   return (
   <div className="btn-group product-button">
