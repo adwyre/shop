@@ -1,8 +1,7 @@
 import "./buttons.css"
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, updateQuantity } from "../../features/cart/cartSlice";
+import { updateQuantity } from "../../features/cart/cartSlice";
 import { selectCartItems } from "../../features/cart/cartSlice";
-import { useEffect } from "react";
 
 const QuantityButton = (props) => {
   const dispatch = useDispatch;
@@ -28,6 +27,7 @@ const QuantityButton = (props) => {
         id: id,
         quantity: element.value
       }
+      console.log(actionObj)
       dispatch(updateQuantity(actionObj))
     }
     return;
