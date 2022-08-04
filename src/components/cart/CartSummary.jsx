@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { selectCartItems } from "../../store/cartSlice";
 import './cart.css'
 import { useState, useEffect } from "react";
+import RemoveButton from "../productButtons/RemoveButton";
 
 const CartSummary = () => {
   const cartItems = Object.values(useSelector(selectCartItems));
@@ -24,7 +25,11 @@ const CartSummary = () => {
       const price = elements[i].innerText.slice(1)
       prices.push(price)
     }
-    setTotal(prices.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr)).toFixed(2))
+    if (prices.length === 1) {
+      setTotal(prices[0])
+    } else {
+      setTotal(prices.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr)).toFixed(2))
+    }
   }
 
   useEffect(() => {
@@ -33,6 +38,7 @@ const CartSummary = () => {
 
   return (
     <div className="summary-page">
+      <div className="item-row"> <h2>Cart</h2></div>
       {cartItems.length > 0 ? 
         cartItems.map(item => 
         <div className="item-row">
@@ -43,6 +49,7 @@ const CartSummary = () => {
             <div className="info-text info-title"><p>{item.product.title}</p></div>
             <div className="info-text info-quant"><p>x{item.quantity}</p></div> 
             <div className="info-text info-price"><h5>${calcItemPrice(item.product.price, item.quantity)}</h5></div>
+            <div className="info-text info-trash"><RemoveButton product={item.product}/></div> 
           </div>
         </div>):
         <p>Loading</p>
