@@ -1,0 +1,33 @@
+/* LOG IN PAGE */
+.login-page {
+  height: 100vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  margin: 20rem 20% auto 20%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-signin {
+  width: 350px;
+  padding: 15px;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    margin: 10rem 2rem;
+  }
+}  
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

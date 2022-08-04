@@ -8,8 +8,6 @@ const initialState = {
   sorted: [],
   searchTerm: '',
   searchResults: [],
-  isLoading: false,
-  error: false
 }
 
 const productsSlice = createSlice({
@@ -49,14 +47,6 @@ const productsSlice = createSlice({
     },
     setSearchResults(state, action) {
       state.searchResults = action.payload
-    },
-    loadProducts(state) {
-      state.isLoading = true;
-      state.error = false;
-    },
-    loadProductsFailed(state) {
-      state.isLoading = false;
-      state.error = true;
     }
   }
 })
@@ -64,18 +54,16 @@ const productsSlice = createSlice({
 // Fetch products by category from API
 export const fetchProducts = (category) => async (dispatch) => {
   try {
-    dispatch(loadProducts());
     const products = await getProductsByCategory(category);
     dispatch(setProducts(products))
   } catch (error) {
-    dispatch(loadProductsFailed())
+    console.error(error);
   }
 };
 
 // Filter subcategory for products
 export const fetchSubcategory = (category, subcategory) => async (dispatch) => {
   try {
-    dispatch(loadProducts());
     const products = await getProductsByCategory(category);
     if (subcategory == 'outerwear') {
       dispatch(setProducts(products.filter(product => product.title.includes('Jacket'))))
@@ -89,26 +77,25 @@ export const fetchSubcategory = (category, subcategory) => async (dispatch) => {
       dispatch(setProducts(products))
     }
   } catch (error) {
-    dispatch(loadProductsFailed())
+    console.error(error);
   }
 }
 
 // Fetch all products from API and filter search results
 export const fetchSearchResults = (searchTerm) => async (dispatch) => {
   try {
-    dispatch(loadProducts());
     let products = await getAllProducts();
     // filter out irrelevant products
     products = products.filter(product => product.category === "women's clothing" || product.category === "men's clothing" || product.category === "jewelery")
 
     dispatch(setSearchResults(products.filter(product => product.title.includes(searchTerm))))
   } catch (error) {
-    dispatch(loadProductsFailed())
+    console.error(error);
   }
 };
 
 // Actions and Reducers
-export const {setProducts, setCategory, setSubcategory, sortBy, setSearchTerm, setSearchResults, loadProducts, loadProductsFailed} = productsSlice.actions;
+export const {setProducts, setCategory, setSubcategory, sortBy, setSearchTerm, setSearchResults} = productsSlice.actions;
 export default productsSlice.reducer;
 
 // Selectors

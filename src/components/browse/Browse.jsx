@@ -14,7 +14,6 @@ const Browse = () => {
   const subcategory = useSelector(selectSubcategory);
   const sorted = useSelector(selectSorted);
   const { pathname, search } = useLocation();
-  const { isLoading, error } = products;
 
   // If category empty after render set to default
   useEffect(() => {

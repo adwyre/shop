@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 import { selectProducts } from "../../store/productsSlice";
 import { selectDetails } from "../../store/detailsSlice";
+import { selectAuth } from "../../store/userSlice";
 
 const AddButton = (props) => {
   const product = props.product;
   const products = useSelector(selectProducts)
   const dispatch = useDispatch();
   const details = useSelector(selectDetails)
+  const authenticated = useSelector(selectAuth)
 
   const handleClick = (e) => {
     let item;

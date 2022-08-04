@@ -3,8 +3,6 @@ import { getCart } from "../api/fakestore";
 
 const initialState = {
   cartItems: {},
-  isLoading: false,
-  error: false
 }
 
 const cartSlice = createSlice({

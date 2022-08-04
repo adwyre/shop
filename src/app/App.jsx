@@ -11,14 +11,17 @@ import Browse from "../components/browse/Browse";
 import Modal from "../components/modal/Modal";
 import Details from "../components/details/Details"
 import { setCategory, setSubcategory, sortBy } from "../store/productsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartButton from "../components/cart/CartButton";
 import CartSummary from "../components/cart/CartSummary";
 import SearchBar from "../components/search/SearchBar"
 import Search from "../components/search/Search";
+import { selectAuth } from "../store/userSlice";
+import Login from "../components/login/Login";
 
 function App() {
   const dispatch = useDispatch();
+  const authenticated = useSelector(selectAuth);
 
   const displayModal = (e) => {
     const elements = document.getElementsByClassName('modal-menu');
@@ -84,7 +87,11 @@ function App() {
             </ul>
             <SearchBar />
           </div>
-          <CartButton />
+          { authenticated ? 
+            <CartButton />
+            :
+            <NavLink to="/login"><button className="btn btn-outline-secondary btn-login">Log in</button></NavLink>
+          }
         </div>
       </nav>
       <main>
@@ -107,6 +114,9 @@ function App() {
         </Route>
         <Route path="/jewelry">
           <Browse />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/">
           <Home />
