@@ -38,6 +38,12 @@
   }
 }  
 
+.item-row.empty {
+  text-align: center;
+  justify-content: center;
+  color: #9e9e9e;
+}
+
 .item-row h2 {
   margin-bottom: 0;
 }

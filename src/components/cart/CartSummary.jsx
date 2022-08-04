@@ -33,7 +33,9 @@ const CartSummary = () => {
   }
 
   useEffect(() => {
-    calcTotal()
+    if (cartItems.length > 0) {
+      calcTotal()
+    }
   },[cartItems])
 
   return (
@@ -52,7 +54,9 @@ const CartSummary = () => {
             <div className="info-text info-trash"><RemoveButton product={item.product}/></div> 
           </div>
         </div>):
-        <p>Loading</p>
+        <div className="item-row empty">
+          <h4>Cart is empty</h4>
+        </div>
       }
       {cartItems.length > 0 ? 
         <div className="item-row last">
@@ -62,7 +66,12 @@ const CartSummary = () => {
           </div>
         </div>
         :
-        <p>Loading</p>
+        <div className="item-row last">
+          <div className="total"><p>Total</p><h4>$0.00</h4></div>
+          <div>
+            <button className="btn btn-cta btn-lg" disabled>Checkout</button>
+          </div>
+        </div>
       }
       
       
