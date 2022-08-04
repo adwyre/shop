@@ -13,6 +13,7 @@ import Details from "../components/details/Details"
 import { setCategory, setSubcategory, sortBy } from "../store/productsSlice";
 import { useDispatch } from "react-redux";
 import CartButton from "../components/cart/CartButton";
+import CartSummary from "../components/cart/CartSummary";
 
 function App() {
   const dispatch = useDispatch();
@@ -96,6 +97,9 @@ function App() {
       <Switch>
         <Route path="/details/:id">
           <Details />
+        </Route>
+        <Route path="/cart">
+          <CartSummary />
         </Route>
         <Route path="/men">
           <Browse />

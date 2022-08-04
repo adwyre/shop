@@ -30,7 +30,6 @@ const QuantityButton = (props) => {
       id: id,
       quantity: element.value
     }
-    console.log(actionObj)
     dispatch(updateQuantity(actionObj))
     return;
   };
@@ -56,7 +55,6 @@ const QuantityButton = (props) => {
   const handleChange = (e) => {
     const currValue = e.target.value;
     const id = e.target.dataset.productId;
-    console.log(currValue)
     
     validateInput(currValue, e.target)
     checkCart(id, e.target)

@@ -30,7 +30,6 @@ const detailsSlice = createSlice({
 // Fetch product details from API
 export const fetchDetails = (id) => async (dispatch) => {
   try {
-    console.log('fetching')
     dispatch(loadDetails());
     const product = await getProductById(id);
     dispatch(setDetails(product))
