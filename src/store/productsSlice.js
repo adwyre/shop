@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProductsByCategory } from "../api/fakestore";
+import { getProductsByCategory, getAllProducts } from "../api/fakestore";
 
 const initialState = {
   products: [],
   category: '',
   subcategory: '',
   sorted: [],
+  searchTerm: '',
+  searchResults: [],
   isLoading: false,
   error: false
 }
@@ -42,6 +44,12 @@ const productsSlice = createSlice({
         state.sorted = []
       }
     },
+    setSearchTerm(state, action) {
+      state.searchTerm = action.payload[0].toUpperCase() + action.payload.substring(1)
+    },
+    setSearchResults(state, action) {
+      state.searchResults = action.payload
+    },
     loadProducts(state) {
       state.isLoading = true;
       state.error = false;
@@ -53,7 +61,7 @@ const productsSlice = createSlice({
   }
 })
 
-// Fetch products from API
+// Fetch products by category from API
 export const fetchProducts = (category) => async (dispatch) => {
   try {
     dispatch(loadProducts());
@@ -85,8 +93,22 @@ export const fetchSubcategory = (category, subcategory) => async (dispatch) => {
   }
 }
 
+// Fetch all products from API and filter search results
+export const fetchSearchResults = (searchTerm) => async (dispatch) => {
+  try {
+    dispatch(loadProducts());
+    let products = await getAllProducts();
+    // filter out irrelevant products
+    products = products.filter(product => product.category === "women's clothing" || product.category === "men's clothing" || product.category === "jewelery")
+
+    dispatch(setSearchResults(products.filter(product => product.title.includes(searchTerm))))
+  } catch (error) {
+    dispatch(loadProductsFailed())
+  }
+};
+
 // Actions and Reducers
-export const {setProducts, setCategory, setSubcategory, sortBy, loadProducts, loadProductsFailed} = productsSlice.actions;
+export const {setProducts, setCategory, setSubcategory, sortBy, setSearchTerm, setSearchResults, loadProducts, loadProductsFailed} = productsSlice.actions;
 export default productsSlice.reducer;
 
 // Selectors
@@ -94,3 +116,5 @@ export const selectProducts = (state) => state.products.products;
 export const selectCategory = (state) => state.products.category;
 export const selectSubcategory = (state) => state.products.subcategory;
 export const selectSorted = (state) => state.products.sorted;
+export const selectSearchTerm = (state) => state.products.searchTerm;
+export const selectSearchResults = (state) => state.products.searchResults;

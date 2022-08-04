@@ -14,6 +14,13 @@ export const getProductById = async(id) => {
   return json;
 }
 
+export const getAllProducts = async() => {
+  const response = await fetch(`${url}/products`);
+  const json = await response.json();
+  console.log(json)
+  return json;
+}
+
 export const getCart = async(userId) => {
   const response = await fetch(`${url}/carts/user/${userId}`);
   const json = await response.json();

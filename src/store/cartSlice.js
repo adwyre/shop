@@ -21,6 +21,7 @@ const cartSlice = createSlice({
       state.cartItems[id].quantity = quantity;
     },
     removeFromCart(state, action) { //action = id
+      // if only one item left in cart make sure it returns and empty state
       if (Object.keys(state.cartItems).length === 1) {
         state.cartItems = {};
       } else {
