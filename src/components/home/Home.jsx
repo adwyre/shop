@@ -2,9 +2,13 @@ import React from "react";
 import './home.css';
 import { useEffect, useState } from "react";
 import Modal from '../modal/Modal'
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCategory, setSubcategory } from "../../store/productsSlice";
 
 const Home = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const dispatch = useDispatch();
 
   const nextSlide = () => {
     if (activeSlide < 2) {
@@ -24,6 +28,15 @@ const Home = () => {
 
   const selectSlide = (e) => {
     setActiveSlide(parseInt(e.target.dataset.bsSlideTo))
+  }
+
+  const handleNavClick = (e) => {
+    dispatch(setCategory(e.target.dataset.toCategory));
+    if (e.target.dataset.toSubcategory) {
+      dispatch(setSubcategory(e.target.dataset.toSubcategory));
+    } else {
+      dispatch(setSubcategory(''));
+    }
   }
 
   useEffect(() => {
@@ -47,9 +60,9 @@ const Home = () => {
             <div className="image-0"></div>
             <div className="container">
               <div className="carousel-caption text-end">
-                <h1>20% off outerwear</h1>
+                <h1>20% off Women's Outerwear</h1>
                 <p>With fall around the corner stay cozy with our lightweight jackets and sweaters.</p>
-                <p><a className="btn btn-lg btn-cta" href="#">Shop now</a></p>
+                <p><NavLink className="btn btn-lg btn-cta" data-to-category="women's clothing" data-to-subcategory="outerwear" to={{pathname: '/women', search: '?category=outerwear'}} onClick={handleNavClick}>Shop now</NavLink></p>
               </div>
             </div>
           </div>
@@ -59,7 +72,7 @@ const Home = () => {
               <div className="carousel-caption text-start">
                 <h1>Women's Tops</h1>
                 <p>New collection of women's tops now available.</p>
-                <p><a className="btn btn-lg btn-cta" href="#">Shop now</a></p>
+                <p><NavLink className="btn btn-lg btn-cta" data-to-category="women's clothing" data-to-subcategory="tops" to={{pathname: '/women', search: '?category=tops'}} onClick={handleNavClick}>Shop now</NavLink></p>
               </div>
             </div>
           </div>
@@ -69,7 +82,7 @@ const Home = () => {
               <div className="carousel-caption text-end">
                 <h1>Men's Clothing</h1>
                 <p>Browse our large selection of men's apparel.</p>
-                <p><a className="btn btn-lg btn-cta" href="#">Shop now</a></p>
+                <p><NavLink className="btn btn-lg btn-cta" data-to-category="men's clothing" to='/men' onClick={handleNavClick}>Shop now</NavLink></p>
               </div>
             </div>
           </div>
