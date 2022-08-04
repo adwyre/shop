@@ -1,4 +1,4 @@
-import { sortBy } from "../../features/products/productsSlice"
+import { sortBy } from "../../store/productsSlice"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";

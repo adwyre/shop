@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProductsByCategory } from "../../api/fakestore";
+import { getProductsByCategory } from "../api/fakestore";
 
 const initialState = {
   products: [],

@@ -1,15 +1,22 @@
 import "./buttons.css"
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../features/cart/cartSlice";
-import { selectProducts } from "../../features/products/productsSlice";
+import { addToCart } from "../../store/cartSlice";
+import { selectProducts } from "../../store/productsSlice";
+import { selectDetails } from "../../store/detailsSlice";
 
 const AddButton = (props) => {
   const product = props.product;
   const products = useSelector(selectProducts)
   const dispatch = useDispatch();
+  const details = useSelector(selectDetails)
 
   const handleClick = (e) => {
-    const item = products.filter(item => item.id == e.target.dataset.productId)[0]
+    let item;
+    if (products.lemgth === 0) {
+      item = products.filter(item => item.id == e.target.dataset.productId)[0]
+    } else {
+      item = details;
+    }
     const quantity = e.target.parentNode.getElementsByTagName("input")[0].value
     dispatch(addToCart({product: item, quantity: quantity}))
   }

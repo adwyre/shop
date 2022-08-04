@@ -3,6 +3,13 @@
   height: fit-content;
   font-size: 1.06rem;
 }
+.btn-secondary {
+  background-color: #a1a1a1;
+  border-color: #a1a1a1;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.06rem;
+}
 
 .form-control.quantity {
   border-radius: 0;

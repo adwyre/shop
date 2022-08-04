@@ -9,9 +9,10 @@ import './app.css';
 import Home from "../components/home/Home";
 import Browse from "../components/browse/Browse";
 import Modal from "../components/modal/Modal";
-import { setCategory, setSubcategory, sortBy } from "../features/products/productsSlice";
+import Details from "../components/details/Details"
+import { setCategory, setSubcategory, sortBy } from "../store/productsSlice";
 import { useDispatch } from "react-redux";
-import CartButton from "../features/cart/CartButton";
+import CartButton from "../components/cart/CartButton";
 
 function App() {
   const dispatch = useDispatch();
@@ -93,6 +94,9 @@ function App() {
       <main>
       <Modal hideModal={hideModal} updateCategory={updateCategory}/>
       <Switch>
+        <Route path="/details/:id">
+          <Details />
+        </Route>
         <Route path="/men">
           <Browse />
         </Route>

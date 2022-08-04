@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCart } from "../../api/fakestore";
+import { getCart } from "../api/fakestore";
 
 const initialState = {
   cartItems: {},
@@ -22,8 +22,8 @@ const cartSlice = createSlice({
       console.log(id)
       state.cartItems[id].quantity = quantity;
     },
-    removeFromCart(state, action) {
-      
+    removeFromCart(state, action) { //action = id
+      delete state.cartItems[action.payload]
     }
   }});
 

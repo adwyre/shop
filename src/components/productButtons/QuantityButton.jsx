@@ -1,7 +1,7 @@
 import "./buttons.css"
 import { useDispatch, useSelector } from "react-redux";
-import { updateQuantity } from "../../features/cart/cartSlice";
-import { selectCartItems } from "../../features/cart/cartSlice";
+import { updateQuantity } from "../../store/cartSlice";
+import { selectCartItems } from "../../store/cartSlice";
 import { useState, useEffect } from "react";
 
 const QuantityButton = (props) => {
