@@ -57,9 +57,9 @@ const Home = () => {
       {/* Image Carousel */}
       <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-indicators">
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className={activeSlide === 0 ? "active" : ""} onClick={selectSlide}></button>
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" className={activeSlide === 1 ? "active" : ""} onClick={selectSlide}></button>
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" className={activeSlide === 2 ? "active" : ""} onClick={selectSlide}></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className={activeSlide === 0 ? "active" : ""} onClick={selectSlide} aria-label="select-slide-1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" className={activeSlide === 1 ? "active" : ""} onClick={selectSlide} aria-label="select-slide-2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" className={activeSlide === 2 ? "active" : ""} onClick={selectSlide} aria-label="select-slide-3"></button>
         </div>
         <div className="carousel-inner">
           {/* Slide 1 */}
@@ -97,10 +97,10 @@ const Home = () => {
           </div>
         </div>
         {/* Carousel Nav */}
-        <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev" onClick={prevSlide}>
+        <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev" onClick={prevSlide} aria-label="previous-slide">
           <span className="carousel-control-prev-icon" ></span>
         </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next" onClick={nextSlide}>
+        <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next" onClick={nextSlide} aria-label="next-slide">
           <span className="carousel-control-next-icon" ></span>
         </button>
       </div>
