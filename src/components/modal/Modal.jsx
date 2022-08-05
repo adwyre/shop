@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSubcategory } from "../../store/productsSlice";
 import { selectAuth } from "../../store/userSlice";
-import { selectCartItems } from "../../store/cartSlice";
+import { sortBy, setSearchResults } from "../../store/productsSlice";
 
 const Modal = (props) => {
   const dispatch = useDispatch();
@@ -17,6 +17,8 @@ const Modal = (props) => {
   const handleModalClick = (e) => {
     hideModal(e);
     dispatch(setSubcategory(e.target.innerHTML.toLowerCase()));
+    dispatch(sortBy(''));
+    dispatch(setSearchResults([]));
     updateCategory(e);
   }
 

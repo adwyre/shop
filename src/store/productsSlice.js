@@ -26,16 +26,19 @@ const productsSlice = createSlice({
       state.subcategory = action.payload
     },
     sortBy(state, action) {
+      let sorted;
+      if (state.searchResults.length > 0) {
+        sorted = state.searchResults.slice();
+      } else {
+        sorted = state.products.slice();
+      }
       if (action.payload === 'price-asc') {
-        const sorted = state.products.slice();
         sorted.sort((a, b) => a.price - b.price);
         state.sorted = sorted
       } else if (action.payload === 'price-desc') {
-        const sorted = state.products.slice();
         sorted.sort((a, b) => b.price - a.price);
         state.sorted = sorted
       } else if (action.payload === 'rating') {
-        const sorted = state.products.slice();
         sorted.sort((a, b) => b.rating.rate - a.rating.rate);
         state.sorted = sorted
       } else {
@@ -87,7 +90,7 @@ export const fetchSearchResults = (searchTerm) => async (dispatch) => {
     let products = await getAllProducts();
     // filter out irrelevant products
     products = products.filter(product => product.category === "women's clothing" || product.category === "men's clothing" || product.category === "jewelery")
-
+    dispatch(setProducts(products))
     dispatch(setSearchResults(products.filter(product => product.title.includes(searchTerm))))
   } catch (error) {
     console.error(error);

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import './navbar.css';
-import { setSubcategory, sortBy } from "../../store/productsSlice";
+import { setSubcategory, sortBy, setSearchResults } from "../../store/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CartButton from "../cart/CartButton";
 import SearchBar from "../search/SearchBar"
@@ -28,6 +28,7 @@ const NavBar = (props) => {
     hideModal(e);
     dispatch(sortBy(''));
     dispatch(setSubcategory(''));
+    dispatch(setSearchResults([]));
     updateCategory(e);
   }
 

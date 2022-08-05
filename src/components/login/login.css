@@ -1,10 +1,10 @@
 /* LOG IN PAGE */
 .login-page {
-  height: 100vh;
+  height: auto;
   width: auto;
   display: flex;
   justify-content: center;
-  margin: 20rem 20% auto 20%;
+  margin: 20rem 20% 28vh 20%;
   padding: 0;
   box-sizing: border-box;
 }
@@ -16,7 +16,7 @@
 
 @media (max-width: 768px) {
   .login-page {
-    margin: 10rem 2rem;
+    margin: 10rem 2rem 42vh 2rem;
   }
 }  
 

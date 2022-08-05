@@ -25,6 +25,9 @@ const cartSlice = createSlice({
       } else {
         delete state.cartItems[action.payload]
       }
+    },
+    submitCart(state) {
+      state.cartItems = {}
     }
   }});
 
@@ -37,7 +40,7 @@ const cartSlice = createSlice({
   }
 
 // Actions and Reducers
-export const {addToCart, updateQuantity, removeFromCart} = cartSlice.actions;
+export const {addToCart, updateQuantity, removeFromCart, submitCart} = cartSlice.actions;
 export default cartSlice.reducer;
 
 // Selectors
