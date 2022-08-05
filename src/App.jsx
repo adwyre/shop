@@ -17,6 +17,7 @@ import { selectAuth} from "./store/userSlice";
 import Login from "./components/login/Login";
 import NavBar from "./components/navBar/NavBar";
 import CartCheckout from "./components/cart/CartCheckout";
+import Error from "./components/error/Error";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,14 +48,19 @@ function App() {
         <Route path="/details/:id">
           <Details />
         </Route>
+        <Route path="/401">
+          <Error />
+        </Route>
         <Route path="/search">
           <Search />
         </Route>
         <Route path="/checkout">
-          <CartCheckout />
+        {authenticated ? <CartCheckout /> : <Redirect to="/401"/>}
+          
         </Route>
         <Route path="/cart">
-          <CartSummary />
+          {authenticated ? <CartSummary /> : <Redirect to="/401"/>}
+          
         </Route>
         <Route path="/men">
           <Browse />
@@ -66,7 +72,7 @@ function App() {
           <Browse />
         </Route>
         <Route path="/login">
-          {authenticated ? <Redirect to="/" /> : <Login />}
+          {authenticated ? <Redirect to="/"/> : <Login />}
         </Route>
         <Route path="/">
           <Home />

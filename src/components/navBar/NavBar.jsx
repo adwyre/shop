@@ -64,9 +64,9 @@ const NavBar = (props) => {
             </li>
             { authenticated && 
               <>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                 <NavLink className="nav-link auth-link" to="/account">Account</NavLink>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <button className="nav-link auth-link btn-logout" onClick={handleLogout}>Log out</button>
                 </li>

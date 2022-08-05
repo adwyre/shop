@@ -37,3 +37,8 @@ body main {
   background-color: #00516a;
   border: #00516a solid 1px;
 }
+
+.error-page {
+  height: 60vh;
+  text-align: center;
+}
