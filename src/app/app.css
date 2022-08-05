@@ -56,3 +56,12 @@
   margin-left: 0.5rem;
   width: 8rem;
 }
+
+.auth-link {
+  text-decoration: underline;
+}
+
+.btn-logout {
+  border: none;
+  background-color: #0e2025;
+}

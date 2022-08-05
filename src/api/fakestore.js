@@ -24,14 +24,14 @@ export const getAllProducts = async() => {
 export const getAllUsers =  async() => {
   const response = await fetch(`${url}/users`);
   const json = await response.json();
-  console.log(json)
+  console.log('All users data received')
   return json;
 }
 
 export const getUserById = async(id) => {
   const response = await fetch(`${url}/users/${id}`);
   const json = await response.json();
-  console.log(json)
+  console.log('User data received')
   return json;
 }
 

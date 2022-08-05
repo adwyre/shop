@@ -20,17 +20,17 @@ const userSlice = createSlice({
 })
 
 // Authenticate user
-const Authenticate = (userName, password) => async (dispatch) => {
+export const authenticate = (userName, password) => async (dispatch) => {
   try {
     const allUsers = await getAllUsers();
-    const foundUser = allUsers.filter(user => user.username === userName)
+    const foundUser = allUsers.filter(user => user.username === userName)[0]
     if (foundUser && foundUser.password === password) {
       const id = foundUser.id
       const user = await getUserById(id);
-      dispatch(setAuth('true'))
+      dispatch(setAuth(true))
       dispatch(setUser(user))
     } else {
-      dispatch(setAuth('false'))
+      dispatch(setAuth(false))
     }
   } catch (error) {
     console.error(error);

@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   NavLink,
+  Redirect
 } from "react-router-dom";
 import './app.css';
 import Home from "../components/home/Home";
@@ -84,6 +85,16 @@ function App() {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/jewelry" data-modal-id="jewelry"onMouseOver={displayModal} onClick={handleNavClick}>Jewelry</NavLink>
               </li>
+              { authenticated && 
+                <>
+                  <li className="nav-item">
+                  <NavLink className="nav-link auth-link" to="/account">Account</NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <button className="nav-link auth-link btn-logout">Log out</button>
+                  </li>
+                </>
+              }
             </ul>
             <SearchBar />
           </div>
@@ -116,7 +127,7 @@ function App() {
           <Browse />
         </Route>
         <Route path="/login">
-          <Login />
+          {authenticated ? <Redirect to="/" /> : <Login />}
         </Route>
         <Route path="/">
           <Home />
