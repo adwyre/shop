@@ -8,7 +8,6 @@ import { selectProducts } from "../../store/productsSlice";
 
 const RemoveButton = (props) => {
   const product = props.product;
-  const products = useSelector(selectProducts);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 

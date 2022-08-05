@@ -68,7 +68,7 @@ export const fetchProducts = (category) => async (dispatch) => {
 export const fetchSubcategory = (category, subcategory) => async (dispatch) => {
   try {
     const products = await getProductsByCategory(category);
-    if (subcategory == 'outerwear') {
+    if (subcategory === 'outerwear') {
       dispatch(setProducts(products.filter(product => product.title.includes('Jacket'))))
     } else if (subcategory === 'tops') {
       dispatch(setProducts(products.filter(product => !product.title.includes('Jacket') && !product.title.includes('Backpack'))))

@@ -17,7 +17,7 @@ const AddButton = (props) => {
   const handleClick = (e) => {
     let item;
     if (products.length > 0) {
-      item = products.filter(item => item.id == e.target.dataset.productId)[0];
+      item = products.filter(item => item.id === e.target.dataset.productId)[0];
     } else {
       item = details;
     }

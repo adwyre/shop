@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCart } from "../api/fakestore";
 
 const initialState = {
   cartItems: {},
