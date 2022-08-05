@@ -14,8 +14,12 @@
 }
 @media (max-width: 768px) {
   .modal {
-  margin-top: 224px;
+  margin-top: 262px;
   padding-left: 0;
+  }
+
+  .modal.modal-lg {
+    margin-top: 340.8px;
   }
 }
 .modal-menu {

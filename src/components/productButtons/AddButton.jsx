@@ -23,7 +23,13 @@ const AddButton = (props) => {
     dispatch(addToCart({product: item, quantity: quantity}))
   }
   return (
-  <button data-product-id={product.id} onClick={handleClick} className="btn btn-primary product-button">Add to Cart</button>
+    <>
+    { authenticated ?
+      <button data-product-id={product.id} onClick={handleClick} className="btn btn-primary product-button">Add to Cart</button>
+      :
+      <button className="btn btn-secondary product-button" disabled>Log in to add</button>
+    }
+    </>
   )
 }
 

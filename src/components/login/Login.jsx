@@ -30,7 +30,7 @@ const Login = () => {
     }
   }
 
-  // Submit test
+  // Submit mock-user data
   const handleClick = () => {
     dispatch(authenticate('johnd', 'm38rmF$'))
   }
@@ -58,7 +58,7 @@ const Login = () => {
         }
         
         <button className="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
-        <button className="w-100 btn btn-lg btn-primary mt-3" type="button" onClick={handleClick}>Sign in using mock-user</button>
+        <button className="w-100 btn btn-lg btn-primary mt-3" type="button" onClick={handleClick}>Sign in with mock-user</button>
       </form>
     </div>
   )

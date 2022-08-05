@@ -17,7 +17,7 @@ import CartButton from "../components/cart/CartButton";
 import CartSummary from "../components/cart/CartSummary";
 import SearchBar from "../components/search/SearchBar"
 import Search from "../components/search/Search";
-import { selectAuth } from "../store/userSlice";
+import { selectAuth, setAuth, setUser } from "../store/userSlice";
 import Login from "../components/login/Login";
 
 function App() {
@@ -61,6 +61,11 @@ function App() {
     navStyle.display === '' || navStyle.display === 'none' ? navStyle.display = 'flex' : navStyle.display = 'none';
   }
 
+  const handleLogout = () => {
+    dispatch(setUser({}))
+    dispatch(setAuth(false))
+  }
+
   return (
     <Router>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top">
@@ -91,7 +96,7 @@ function App() {
                   <NavLink className="nav-link auth-link" to="/account">Account</NavLink>
                   </li>
                   <li className="nav-item">
-                    <button className="nav-link auth-link btn-logout">Log out</button>
+                    <button className="nav-link auth-link btn-logout" onClick={handleLogout}>Log out</button>
                   </li>
                 </>
               }

@@ -2,6 +2,16 @@
 #myCarousel {
   height: 80vh;
 }
+@media (max-width: 768px) {
+  #myCarousel {
+    height: 60vh;
+  }
+}
+@media (max-width: 425px) {
+  #myCarousel {
+    height: 50vh;
+  }
+}
 
 #myCarousel .carousel-inner {
   height: 100%;
@@ -41,6 +51,10 @@
 }
 
 .mission-container {
-  margin: 10vh 15%;
+  margin: 10rem 15% 4rem 15%;
   text-align: center;
+}
+
+.mission-container h2 {
+  margin-top: 2rem;
 }
