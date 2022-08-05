@@ -19,3 +19,26 @@ export const formatPrice = (price) => {
   const formattedPrice = Number.parseFloat(price).toFixed(2);
   return formattedPrice;
 }
+
+export const calcTotal = (setTotal) => {
+  const elements = document.getElementsByClassName('price')
+  if (!elements) {
+    setTotal('0')
+    return;
+  }
+  const prices = []
+  for (let i = 0; i < elements.length; i++) {
+    const price = elements[i].innerText.slice(1)
+    prices.push(price)
+  }
+  if (prices.length === 1) {
+    setTotal(prices[0])
+  } else {
+    setTotal(prices.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr)).toFixed(2))
+  }
+}
+
+export const calcItemPrice = (price, quantity) => {
+  const total = Number.parseFloat(price) * Number.parseFloat(quantity);
+  return total.toFixed(2);
+}
