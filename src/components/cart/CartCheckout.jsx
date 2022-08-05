@@ -8,7 +8,6 @@ import { calcTotal, calcItemPrice } from "../../utils";
 const CartCheckout = () => {
   const cart = useSelector(selectCartItems);
   const cartItems = Object.values(useSelector(selectCartItems));
-  console.log(cartItems)
   const [total, setTotal] = useState('')
 
   useEffect(() => {
