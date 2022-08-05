@@ -38,7 +38,7 @@ export const authenticate = (userName, password) => async (dispatch) => {
 };
 
 // Actions and reducers
-export const {setUser, setAuth} = userSlice.actions
+export const {setUser, setAuth} = userSlice.actions;
 export default userSlice.reducer;
 
 // Selectors

@@ -1,24 +1,27 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectCartItems, getTotalItems } from "../../store/cartSlice";
-import './cart.css'
-import { useState, useEffect } from "react";
+import './cart.css';
 import { calcTotal, calcItemPrice } from "../../utils";
+// Store
+import { selectCartItems, getTotalItems } from "../../store/cartSlice";
+
 
 const CartCheckout = () => {
   const cart = useSelector(selectCartItems);
   const cartItems = Object.values(useSelector(selectCartItems));
-  const [total, setTotal] = useState('')
-  const [sameAddress, setSameAddress] = useState(true)
+  const [total, setTotal] = useState('');
+  const [sameAddress, setSameAddress] = useState(true);
 
+  // set sameAddress state to true/false if checked/unchecked
   const handleCheckChange = () => {
     const checked = document.getElementById("same-address").checked;
     setSameAddress(checked);
   }
 
+  // Calculate total cost in cart
   useEffect(() => {
     if (cartItems.length > 0) {
-      calcTotal(setTotal)
+      calcTotal(setTotal);
     }
   },[cartItems])
 
@@ -36,7 +39,7 @@ const CartCheckout = () => {
             {/* Cart Items */}
             {cartItems.length > 0 ?
               cartItems.map(item => 
-                <li className="list-group-item d-flex justify-content-between lh-sm">
+                <li key={item.product.id} className="list-group-item d-flex justify-content-between lh-sm">
                   <div>
                     <h6 className="my-0">{item.product.title}</h6>
                     <small className="text-muted">x{item.quantity}</small>
@@ -266,4 +269,5 @@ const CartCheckout = () => {
     </div>
 )
 }
+
 export default CartCheckout;

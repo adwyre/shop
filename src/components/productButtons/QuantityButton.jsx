@@ -1,16 +1,18 @@
-import "./buttons.css"
 import { useDispatch, useSelector } from "react-redux";
+import "./buttons.css"
+// Store
 import { updateQuantity } from "../../store/cartSlice";
 import { selectCartItems } from "../../store/cartSlice";
-import { useState, useEffect } from "react";
+
 
 const QuantityButton = (props) => {
   const dispatch = useDispatch();
   const product = props.product;
   const cartItems = useSelector(selectCartItems);
 
+  // Prevent inputs <1 or >99
   const validateInput = (currValue, element) => {
-    // reset values < 0 or > 99
+    // reset values < 1 or > 99
     if (currValue > 99 || currValue < 1) {
       if (currValue > 99) {
         element.value = 99;
@@ -21,6 +23,7 @@ const QuantityButton = (props) => {
     return;
   };
 
+  // Check if item already in cart
   const checkCart = (id, element) => {
     // if item in cart update quantity
     if (!cartItems[id]) {
@@ -30,11 +33,11 @@ const QuantityButton = (props) => {
       id: id,
       quantity: element.value
     }
-    dispatch(updateQuantity(actionObj))
+    dispatch(updateQuantity(actionObj));
     return;
   };
   
-
+  // Update quantity input +/- 1
   const handleClick = (e) => {
     const input = e.target.parentNode.getElementsByTagName("input")[0];
     let currValue = parseInt(input.value);
@@ -52,6 +55,7 @@ const QuantityButton = (props) => {
     checkCart(id, input);
   }
 
+  // Update quantity
   const handleChange = (e) => {
     const currValue = e.target.value;
     const id = e.target.dataset.productId;
@@ -63,9 +67,12 @@ const QuantityButton = (props) => {
 
   return (
   <div className="btn-group product-button">
-    <button type="button" className="btn btn-light" onClick={(handleClick)}>-</button>
+    {/* +++ */}
+    <button type="button" className="btn btn-light" onClick={(handleClick)} aria-label="decrease-quantity">-</button>
+    {/* Number Input */}
     <input data-product-id={product.id} onChange={handleChange} type="number" className="form-control quantity" defaultValue={1} max="99" min="1"></input>
-    <button type="button" className="btn btn-light" onClick={handleClick}>+</button>
+    {/* --- */}
+    <button type="button" className="btn btn-light" onClick={handleClick} aria-label="increase-quantity">+</button>
   </div>
   )
 }

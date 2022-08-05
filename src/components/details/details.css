@@ -1,4 +1,5 @@
 .details-page {
+  height: auto;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -15,7 +16,7 @@
 }
 @media (max-width: 768px) {
   .details-page {
-    margin: auto auto 4rem auto;
+    margin: auto;
     flex-direction: column;
   }
 }  

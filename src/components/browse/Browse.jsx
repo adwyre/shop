@@ -1,11 +1,13 @@
-import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { React, useEffect} from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import './browse.css';
-import { useEffect} from "react";
-import { selectCategory, selectSubcategory, selectProducts, selectSorted, fetchProducts, fetchSubcategory, setCategory} from "../../store/productsSlice";
+// Components
 import Products from "../products/Products";
 import SortBar from "../sortBar/SortBar";
+// Store
+import { selectCategory, selectSubcategory, selectProducts, selectSorted, fetchProducts, fetchSubcategory, setCategory} from "../../store/productsSlice";
+
 
 const Browse = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const Browse = () => {
   const sorted = useSelector(selectSorted);
   const { pathname, search } = useLocation();
 
-  // If category empty after render set to default
+  // If category empty after render, set to default category
   useEffect(() => {
     if (!category) {
       if (pathname === '/women') {
@@ -26,7 +28,7 @@ const Browse = () => {
         dispatch(setCategory("jewelery"));
       }
     } else {
-      return
+      return;
     }
   }, [pathname])
 
@@ -42,7 +44,7 @@ const Browse = () => {
   return (
     <div className="browse-page">
       <div className="row">
-        {/* sort-bar */}
+        {/* Sort-bar */}
         <SortBar />
         {/* Products */}
         <div className="bowse-items d-flex flex-wrap">
@@ -52,4 +54,5 @@ const Browse = () => {
     </div>
   )
 }
-export default Browse
+
+export default Browse;

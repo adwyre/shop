@@ -1,17 +1,21 @@
-import { sortBy } from "../../store/productsSlice"
-import { useDispatch } from "react-redux"
-import { useEffect } from "react";
+import { React, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux"
 import './sortBar.css';
+// Store
+import { sortBy } from "../../store/productsSlice"
+
 
 const SortBar = () => {
   const dispatch = useDispatch();
   const { pathname, search } = useLocation();
 
+  // On option change, sort items
   const handleChange = (e) => {
     dispatch(sortBy(e.target.value))
   }
 
+  // re-set searchbar value
   useEffect(() => {
     document.getElementById("sort").value = "all"
   }, [pathname, search])
@@ -33,4 +37,4 @@ const SortBar = () => {
   )
 }
 
-export default SortBar
+export default SortBar;

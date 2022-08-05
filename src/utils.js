@@ -42,3 +42,7 @@ export const calcItemPrice = (price, quantity) => {
   const total = Number.parseFloat(price) * Number.parseFloat(quantity);
   return total.toFixed(2);
 }
+
+export const hideModal = (e) => {
+  document.getElementsByClassName('modal')[0].style.display = 'none';
+}

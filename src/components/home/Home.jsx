@@ -1,34 +1,39 @@
-import React from "react";
-import './home.css';
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import './home.css';
+// Store
 import { setCategory, setSubcategory } from "../../store/productsSlice";
+
 
 const Home = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const dispatch = useDispatch();
 
+  // Go to next slide in carousel
   const nextSlide = () => {
     if (activeSlide < 2) {
-      setActiveSlide(activeSlide + 1)
+      setActiveSlide(activeSlide + 1);
     } else {
-      setActiveSlide(0)
+      setActiveSlide(0);
     }
   }
 
+  // Go to previous slide in carousel
   const prevSlide = () => {
     if (activeSlide > 0) {
-      setActiveSlide(activeSlide - 1)
+      setActiveSlide(activeSlide - 1);
     } else {
-      setActiveSlide(2)
+      setActiveSlide(2);
     }
   }
 
+  // Go to selected slide in carousel
   const selectSlide = (e) => {
-    setActiveSlide(parseInt(e.target.dataset.bsSlideTo))
+    setActiveSlide(parseInt(e.target.dataset.bsSlideTo));
   }
 
+  // Navigate to browse page on cta button click
   const handleNavClick = (e) => {
     dispatch(setCategory(e.target.dataset.toCategory));
     if (e.target.dataset.toSubcategory) {
@@ -38,6 +43,7 @@ const Home = () => {
     }
   }
 
+  // Start auto slide change
   useEffect(() => {
     const newInterval = setInterval(nextSlide, 7000);
     return () => {
@@ -48,6 +54,7 @@ const Home = () => {
 
   return (
     <div>
+      {/* Image Carousel */}
       <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className={activeSlide === 0 ? "active" : ""} onClick={selectSlide}></button>
@@ -55,6 +62,7 @@ const Home = () => {
           <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" className={activeSlide === 2 ? "active" : ""} onClick={selectSlide}></button>
         </div>
         <div className="carousel-inner">
+          {/* Slide 1 */}
           <div className={activeSlide === 0 ? "carousel-item active" : "carousel-item"} data-bs-slide="0">
             <div className="image-0"></div>
             <div className="container">
@@ -65,6 +73,7 @@ const Home = () => {
               </div>
             </div>
           </div>
+          {/* Slide 2 */}
           <div className={activeSlide === 1 ? "carousel-item active" : "carousel-item"} data-bs-slide="1">
             <div className="image-1"></div>
             <div className="container">
@@ -75,6 +84,7 @@ const Home = () => {
               </div>
             </div>
           </div>
+          {/* Slide 3 */}
           <div className={activeSlide === 2 ? "carousel-item active" : "carousel-item"} data-bs-slide="2">
             <div className="image-2"></div>
             <div className="container">
@@ -86,6 +96,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        {/* Carousel Nav */}
         <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev" onClick={prevSlide}>
           <span className="carousel-control-prev-icon" ></span>
         </button>

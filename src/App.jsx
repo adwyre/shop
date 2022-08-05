@@ -1,32 +1,24 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+// Components
 import Home from "./components/home/Home";
 import Browse from "./components/browse/Browse";
 import Modal from "./components/modal/Modal";
 import Details from "./components/details/Details"
-import { setCategory} from "./store/productsSlice";
-import { useDispatch, useSelector } from "react-redux";
 import CartSummary from "./components/cart/CartSummary";
 import Search from "./components/search/Search";
-import { selectAuth} from "./store/userSlice";
 import Login from "./components/login/Login";
 import NavBar from "./components/navBar/NavBar";
 import CartCheckout from "./components/cart/CartCheckout";
 import Error from "./components/error/Error";
+// Store
+import { selectAuth} from "./store/userSlice";
+import { setCategory} from "./store/productsSlice";
 
 function App() {
   const dispatch = useDispatch();
   const authenticated = useSelector(selectAuth);
-
-  const hideModal = (e) => {
-    document.getElementsByClassName('modal')[0].style.display = 'none';
-    const modalId = e.target.dataset.modalId;
-  }
   
   // Set category to match pathname
   const updateCategory = (e) => {
@@ -42,9 +34,9 @@ function App() {
   return (
     <>
     <Router>
-      <NavBar hideModal={hideModal} updateCategory={updateCategory}/>
+      <NavBar updateCategory={updateCategory}/>
       <main>
-      <Modal hideModal={hideModal} updateCategory={updateCategory}/>
+      <Modal updateCategory={updateCategory}/>
       <Switch>
         <Route path="/details/:id">
           <Details />
@@ -56,12 +48,10 @@ function App() {
           <Search />
         </Route>
         <Route path="/checkout">
-        {authenticated ? <CartCheckout /> : <Redirect to="/401"/>}
-          
+          {authenticated ? <CartCheckout /> : <Redirect to="/401"/>}
         </Route>
         <Route path="/cart">
           {authenticated ? <CartSummary /> : <Redirect to="/401"/>}
-          
         </Route>
         <Route path="/men">
           <Browse />

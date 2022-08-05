@@ -1,18 +1,19 @@
-import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { React, useEffect} from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import './search.css';
-import { useEffect} from "react";
-import { selectSorted, fetchSearchResults, selectSearchResults, selectSearchTerm} from "../../store/productsSlice";
+// Components
 import Products from "../products/Products";
 import SortBar from "../sortBar/SortBar";
+// Store
+import { selectSorted, fetchSearchResults, selectSearchResults, selectSearchTerm} from "../../store/productsSlice";
+
 
 const Search = () => {
   const dispatch = useDispatch();
   const sorted = useSelector(selectSorted);
-  const searchResults = useSelector(selectSearchResults)
-  const searchTerm = useSelector(selectSearchTerm)
-  const { search } = useLocation();
+  const searchResults = useSelector(selectSearchResults);
+  const searchTerm = useSelector(selectSearchTerm);
 
   // Fetch product data
   useEffect(() => {
@@ -42,4 +43,5 @@ const Search = () => {
     </div>
   )
 }
-export default Search
+
+export default Search;
